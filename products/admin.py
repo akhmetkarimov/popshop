@@ -41,14 +41,13 @@ class ImageAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src="/media/{obj.img}" width="80" height="80">')
     show_img.__name__ = 'Img'
 
-
 class VendorAdmin(ImportExportModelAdmin):
     resource_class = resources.VendorResource
     list_display = ('name', 'code')
     search_fields = ('name', 'code')
     ordering = ('name', )
 
-
+# @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', )
     search_fields = ('name', )
