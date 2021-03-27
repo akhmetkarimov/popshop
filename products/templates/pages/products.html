@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+</head>
+<body>
+    
+    <div class="collections container">
+        <h3 class="section-title">Products</h3>
+        <div class="wrap">
+
+            {% for product in products %}
+
+            <a href="#" class="collection-item">
+                <!-- <img src="/media/{{collection.img}}" alt="collection"> -->
+                <div class="collection-info">
+                    <h3>{{product.name}}</h3>
+                    <p>10 products</p>
+                </div>
+            </a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</body>
+</html>
