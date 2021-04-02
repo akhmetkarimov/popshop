@@ -37,7 +37,13 @@ class Catalog(models.Model):
     def __str__(self):
         return f'{self.name} - {self.id}'
 
+class Image(models.Model):
+    name = models.CharField(max_length=200)
+    img = models.FileField()
 
+    def __str__(self):
+        return f'{self.name} - {self.id}'
+        
 class Product(models.Model):
     name = models.CharField(max_length=1000)
     seo_name = models.SlugField(max_length=1000)
@@ -46,14 +52,12 @@ class Product(models.Model):
     catalog = models.ForeignKey(Catalog, null=True, blank=True, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     collection = models.ManyToManyField(Collection, related_name='products')
+    images = models.ManyToManyField(Image, related_name='products')
 
     def __str__(self):
         return f'{self.name} - {self.id}'
 
-class Image(models.Model):
-    name = models.CharField(max_length=200)
-    img = models.FileField()
-    product = models.ForeignKey(Product, null=True, blank=True, on_delete=models.CASCADE)
+
 
     # {
     #     'id': 1,

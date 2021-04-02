@@ -17,7 +17,11 @@
             {% for product in products %}
 
             <a href="#" class="collection-item">
-                <!-- <img src="/media/{{collection.img}}" alt="collection"> -->
+                {% for pic in product.images.all %}
+                    {% if forloop.first %}
+                        <img src="/media/{{pic.img}}" alt="collection">
+                    {% endif %}
+                {% endfor %}
                 <div class="collection-info">
                     <h3>{{product.name}}</h3>
                     <p>10 products</p>

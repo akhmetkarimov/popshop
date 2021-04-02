@@ -52,7 +52,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', )
     search_fields = ('name', )
     ordering = ('name', )
-    filter_horizontal = ('collection',)
+    filter_horizontal = ('collection', 'images')
 
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Collection, CollectionAdmin)

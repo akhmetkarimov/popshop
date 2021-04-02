@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from . import models
 from django.db.models import Prefetch
 
@@ -13,9 +14,33 @@ def sweets(request, colId):
         # models.Collection.objects.get(id=colId)
         colId
     ]
+    # field, order
+    # name, desc
+
+    field = 'name'
+    order = '-'
+
+    if order == 'desc':
+        order = '-'
+    else:
+        order = ''
+
+    products = Paginator(
+        models.Product.objects.filter(collection__in=col_list).order_by(f'{order}{field}'),
+        1
+    )
+
+    print(products.num_pages) # Кол страниц
+
+    page = 1
+    page_obj = products.get_page(page)
+    
+    print(page_obj.next_page_number)
+    print(page_obj.has_previous())
+    print(page_obj.has_next())
 
     data = {
-        "products": models.Product.objects.filter(collection__in=col_list)
+        "products": page_obj
     }
 
     # "products": models.Product.objects.prefetch_related(
