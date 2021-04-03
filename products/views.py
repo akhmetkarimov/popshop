@@ -51,3 +51,10 @@ def sweets(request, colId):
     # prefetch_related ManyToMany
 
     return render(request, 'pages/products.html', data)
+
+def product_detail(request, pslug):
+    # id == pk
+    data = {
+        "product": models.Product.objects.get(seo_name=pslug)
+    }
+    return render(request, 'pages/detail.html')

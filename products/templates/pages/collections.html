@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
 </head>
 <body>
-    
+
+    {% include 'components/header.html' %}
+
     <div class="collections container">
-        <h3 class="section-title">Collections   {{request.user}}  {{request.user.is_authenticated}}</h3>
+        <h3 class="section-title">Collections</h3>
         <div class="wrap">
 
             {% for collection in collections %}

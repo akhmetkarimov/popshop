@@ -1,0 +1,16 @@
+<div style="
+    background: black;
+    padding: 20px 10%;
+    "
+    >
+    {% if request.user.is_authenticated %}
+
+    <a href="/auth/logout" style="color: white;">Logout</a>
+    <p style="color: white;">{{request.user}}</p>
+
+    {% else %}
+    <a href="/auth/login" style="color: white;">Login</a>
+    {% endif %}
+
+    
+</div>

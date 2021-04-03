@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
 </head>
 <body>
-    
+    {% include 'components/header.html' %}
+
     <div class="collections container">
         <h3 class="section-title">Products</h3>
         <div class="wrap">
 
             {% for product in products %}
 
-            <a href="#" class="collection-item">
+            <a class="collection-item" href="/product/{{product.seo_name}}">
                 {% for pic in product.images.all %}
                     {% if forloop.first %}
                         <img src="/media/{{pic.img}}" alt="collection">
